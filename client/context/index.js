@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, createContext } from "react";
+import React, { useEffect, useContext, createContext} from "react";
 
 import {
   useAddress,
@@ -9,11 +9,22 @@ import {
   useContractEvents,
 } from "@thirdweb-dev/react";
 
-import {ethers} from 'ethers'
+import { ethers } from "ethers";
 
+const StateContext = createContext();
 
-const index = () => {
-  return <div></div>;
+export const StateContextProvider = ({ children }) => {
+  const { contract } = useContract("");
+  const address = useAddress();
+  const connect = useMetamask();
+
+  const realEstate = "Real Estate DApp"
+
+  return(
+    <StateContext.Provider value={{address,connect,contract,realEstate}}>
+        {children}
+    </StateContext.Provider>
+  )
 };
 
-export default index;
+export const useStateContext = () => useContext(StateContext);
