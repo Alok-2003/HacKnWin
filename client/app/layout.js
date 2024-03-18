@@ -6,8 +6,8 @@ import { ethers } from "ethers";
 import { useStateContext } from "../context";
 
 const layout = () => {
-  const {address,connect,contract,realEstate} = useStateContext();
-  return <div>{realEstate}</div>;
+  const {address, connect, contract,realEstate}  = useStateContext();
+  return <div>index {realEstate}</div>;
 };
 
 export default layout;
